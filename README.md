@@ -1,4 +1,4 @@
-# Cell Homogenization program Solver using FEnicsx
+# Cell Homogenization solver using FEnicsx
 ## 1) Introduction
 🚀 This is a Fenicsx python project using finite element method (FEM) to compute effective stiffness tensor of cells. 
 
