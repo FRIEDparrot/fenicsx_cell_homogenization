@@ -3,9 +3,7 @@
 
 cff-version: 1.2.0
 title: Fenicsx cell homogenization solver
-message: >-
-  If you use this project for your academic research work,
-  please cite it in your essay.
+message: “If you use this project for your academic research work, please cite it in your essay.”
 type: software
 authors:
   - given-names: Fried
@@ -14,9 +12,7 @@ authors:
     affiliation: Northwestern Polytechnical University
     orcid: 'https://orcid.org/0009-0008-2937-2509'
 repository-code: 'https://github.com/FRIEDparrot/fenicsx_cell_homogenization'
-abstract: >-
-  Fenicsx Python FEM Project to compute cell homogenization
-  and effective Stiffness Matrix
+abstract: "Fenicsx Python FEM Project to compute cell homogenization and effective Stiffness Matrix"
 keywords:
   - Homogenization
   - Finite Element Analysis
@@ -24,3 +20,4 @@ keywords:
 license: Apache-2.0
 version: 1.0.0
 date-released: '2025-08-16'
+url: "https://github.com/FRIEDparrot/fenicsx_cell_homogenization/cite"
