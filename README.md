@@ -36,9 +36,6 @@ $$
 \int_{Y} \left( C_{ijpq} \frac{ \partial \chi_{p}^{kl} }{ \partial y_{q} }  - C_{ijkl} \frac{ \partial v_{i}(y) }{ \partial y_{j} } \right) dY  = 0 \qquad  \forall  v \in  V_{\underline{Y}}
 $$
 
-> [!note]  
-> Please cite this project according to the `CITATION.cff` file when used in academic research.
-
 ## 2) Some Related work 
 
 Closely related work has done by Dong et al using *voxel-based homogenization*. (2019), who provided a concise Matlab implementation for homogenization in lattice structures. You can refer to their work here: 
@@ -104,3 +101,21 @@ result for directional young modulus:
 > 
 > If there are flaws or computational glitches, leave it on issue page or you can fix it and then make a PR to contribute to this project 
 
+## 5)  How to cite this work 
+
+Please cite this software using the following BibTeX entry (also available in CITATION.cff) when use this in academic research.
+
+#### BibTex entry:
+
+```latex
+@software{fenicsx_cell_homogenization,
+  author       = {Parrot, Fried},
+  title        = {{FEniCSx Cell Homogenization Solver}},
+  month        = {8},
+  year         = {2025},
+  publisher    = {GitHub},
+  version      = {1.0.0},
+  url          = {https://github.com/FRIEDparrot/fenicsx_cell_homogenization},
+  note         = {Software for computational homogenization with FEniCSx}
+}
+```
