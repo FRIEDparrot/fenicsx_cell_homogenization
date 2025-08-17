@@ -15,6 +15,8 @@ $$
 \varepsilon_{pq}^{0(kl)} = \delta_{pk} \delta_{ql}
 $$
 
+and : 
+
 $$
 \varepsilon_{pq}^{(ij)} = \varepsilon_{pq} (\chi^{ij})= \frac{1}{2} (\chi^{ij}_{p,q} + \chi^{ij}_{q,p}) 
 $$
