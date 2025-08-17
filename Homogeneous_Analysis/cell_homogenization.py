@@ -9,7 +9,7 @@ from mechanics.iso import (
     unit_strain_tensor_voigt, epsilon_voigt
 )
 from dolfinx_mpc import MultiPointConstraint, LinearProblem as MPCProblem
-from .cell_visual_toolkit import HomogenizationVisualizer
+from Homogeneous_Analysis.cell_visual_toolkit import HomogenizationVisualizer
 import os
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -40,8 +40,8 @@ class CellHomogenization:
         :param direction:
         :return:
         """
-        dofs_slave = locate_dofs_geometrical(V, marker=lambda x: np.isclose(x[direction], 0.0))  # locate master dofs
-        dofs_master = locate_dofs_geometrical(V, marker=lambda x: np.isclose(x[direction], 1.0))  # locate slave dofs
+        dofs_master = locate_dofs_geometrical(V, marker=lambda x: np.isclose(x[direction], 0.0))  # locate master dofs
+        dofs_slave = locate_dofs_geometrical(V, marker=lambda x: np.isclose(x[direction], 1.0))  # locate slave dofs
         return dofs_master, dofs_slave
 
     @staticmethod
@@ -92,7 +92,7 @@ class CellHomogenization:
         :return:
         """
         # Define function space
-        V = functionspace(self.domain, ("CG", 2, (self.dim,)))
+        V = functionspace(self.domain, ("CG", 2, (self.dim,)))  # change degree to 1 will calculate faster but less accurate
 
         # voigt index mapping
         u_solu = []
@@ -150,7 +150,7 @@ class CellHomogenization:
 
 def main():
     # only use cube cell for test
-    filename  = "../voxels/cube.msh"
+    filename  = "../voxels/star_cube.msh"
     E = 200e9 # Young's modulus in Pa
     nu = 0.3  # Poisson's ratio
     homo = CellHomogenization(filename, E, nu)
@@ -162,3 +162,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

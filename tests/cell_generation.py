@@ -9,6 +9,8 @@ import os
 
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
+MESH_SIZE = 0.03    # **the result will be incorrect either increase or decrease this value**
+
 def test_cube():
     """
     Test the StrutCell class with a cube.
@@ -16,7 +18,7 @@ def test_cube():
     points, grid, diameter = get_cube_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.15, filename="../voxels/cube.msh")
+    voxel.create(mesh_size=0.1, filename="../voxels/cube.msh")
 
 def test_octahedron():
     """
@@ -34,7 +36,7 @@ def test_octet_truss():
     points, grid, diameter = get_octet_truss_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.1, filename="../voxels/octet_truss.msh")
+    voxel.create(mesh_size=0.05, filename="../voxels/octet_truss.msh")
 
 # asymmetric,  not test
 def test_tetrahedron():
@@ -44,7 +46,7 @@ def test_tetrahedron():
     points, grid, diameter = get_tetrahedron_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.1, filename="../voxels/tetrahedron.msh")
+    voxel.create(mesh_size=0.05, filename="../voxels/tetrahedron.msh")
 
 def test_cross_lattice():
     """
@@ -71,7 +73,7 @@ def test_enhanced_voxel():
     points, grid, diameter = get_enhanced_voxel_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.1, filename="../voxels/enhanced_voxel.msh")
+    voxel.create(mesh_size=0.05, filename="../voxels/enhanced_voxel.msh")
 
 def test_tesseract_structure():
     """
@@ -80,7 +82,7 @@ def test_tesseract_structure():
     points, grid, diameter = get_tesseract_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.1, filename="../voxels/tesseract.msh")
+    voxel.create(mesh_size=0.03, filename="../voxels/tesseract.msh")
 
 def test_vintiles_structure():
     """
@@ -89,7 +91,7 @@ def test_vintiles_structure():
     points, grid, diameter = get_vintiles_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.1, filename="../voxels/vintiles.msh")
+    voxel.create(mesh_size=0.03, filename="../voxels/vintiles.msh")
 
 def test_volume_center():
     """
@@ -108,7 +110,7 @@ def test_face_centered_cubic():
     points, grid, diameter = get_face_centered_cubic_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.1, filename="../voxels/face_centered_cubic.msh")
+    voxel.create(mesh_size=0.03, filename="../voxels/face_centered_cubic.msh")
 
 if __name__ == "__main__":
     test_cube()
