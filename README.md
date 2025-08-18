@@ -17,9 +17,7 @@ $$
 
 and : 
 
-$$
-\varepsilon_{pq}^{(ij)} = \varepsilon_{pq} (\chi^{ij})= \frac{1}{2} (\chi^{ij}_{p,q} + \chi^{ij}_{q,p}) 
-$$
+$$\varepsilon_{pq}^{(ij)} = \varepsilon_{pq} (\chi^{ij}) = \frac{1}{2} (\chi^{ij}\_{p,q} + \chi^{ij}_{q,p})$$
 
 Also, $\varepsilon_{pq}^{(kl)}$ can be found by solving the elasticity **equations with the prescribed macroscopic strain** : 
 
