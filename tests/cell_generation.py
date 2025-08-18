@@ -1,11 +1,12 @@
 from Homogeneous_Analysis.cell_mesh_generation import StrutCell, CellSectionType
-from cell_data import (
+import os
+from tests.cell_data import (
     get_cube_data, get_octahedron_data, get_octet_truss_data,
     get_tetrahedron_data, get_cross_lattice_data, get_star_cube_data,
     get_enhanced_voxel_data, get_tesseract_data, get_vintiles_data,
     get_face_centered_cubic_data, get_volume_center_data
 )
-import os
+
 
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
@@ -18,7 +19,7 @@ def test_cube():
     points, grid, diameter = get_cube_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.1, filename="../voxels/cube.msh")
+    voxel.create(mesh_size=0.1, filename="cells/cube.msh")
 
 def test_octahedron():
     """
@@ -27,7 +28,7 @@ def test_octahedron():
     points, grid, diameter = get_octahedron_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.1, filename="../voxels/octahedron.msh")
+    voxel.create(mesh_size=0.1, filename="cells/octahedron.msh")
 
 def test_octet_truss():
     """
@@ -36,7 +37,7 @@ def test_octet_truss():
     points, grid, diameter = get_octet_truss_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.05, filename="../voxels/octet_truss.msh")
+    voxel.create(mesh_size=0.05, filename="cells/octet_truss.msh")
 
 # asymmetric,  not test
 def test_tetrahedron():
@@ -46,7 +47,7 @@ def test_tetrahedron():
     points, grid, diameter = get_tetrahedron_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.05, filename="../voxels/tetrahedron.msh")
+    voxel.create(mesh_size=0.05, filename="cells/tetrahedron.msh")
 
 def test_cross_lattice():
     """
@@ -55,7 +56,7 @@ def test_cross_lattice():
     points, grid, diameter = get_cross_lattice_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.1, filename="../voxels/cross_lattice.msh")
+    voxel.create(mesh_size=0.1, filename="cells/cross_lattice.msh")
 
 def test_star_cube():
     """
@@ -64,7 +65,7 @@ def test_star_cube():
     points, grid, diameter = get_star_cube_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=0.1)
     voxel.check_valid()
-    voxel.create(mesh_size=0.1, filename="../voxels/star_cube.msh")
+    voxel.create(mesh_size=0.1, filename="cells/star_cube.msh")
 
 def test_enhanced_voxel():
     """
@@ -73,7 +74,7 @@ def test_enhanced_voxel():
     points, grid, diameter = get_enhanced_voxel_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.05, filename="../voxels/enhanced_voxel.msh")
+    voxel.create(mesh_size=0.05, filename="cells/enhanced_voxel.msh")
 
 def test_tesseract_structure():
     """
@@ -82,7 +83,7 @@ def test_tesseract_structure():
     points, grid, diameter = get_tesseract_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.03, filename="../voxels/tesseract.msh")
+    voxel.create(mesh_size=0.03, filename="cells/tesseract.msh")
 
 def test_vintiles_structure():
     """
@@ -91,7 +92,7 @@ def test_vintiles_structure():
     points, grid, diameter = get_vintiles_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.03, filename="../voxels/vintiles.msh")
+    voxel.create(mesh_size=0.03, filename="cells/vintiles.msh")
 
 def test_volume_center():
     """
@@ -100,7 +101,7 @@ def test_volume_center():
     points, grid, diameter = get_volume_center_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.1, filename="../voxels/volume_center.msh")
+    voxel.create(mesh_size=0.1, filename="cells/volume_center.msh")
 
 def test_face_centered_cubic():
     """
@@ -110,7 +111,7 @@ def test_face_centered_cubic():
     points, grid, diameter = get_face_centered_cubic_data()
     voxel = StrutCell(points, grid, section=CellSectionType.CIRCLE, diameter=diameter)
     voxel.check_valid()
-    voxel.create(mesh_size=0.03, filename="../voxels/face_centered_cubic.msh")
+    voxel.create(mesh_size=0.03, filename="cells/face_centered_cubic.msh")
 
 if __name__ == "__main__":
     test_cube()

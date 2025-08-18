@@ -150,7 +150,7 @@ class CellHomogenization:
 
 def main():
     # only use cube cell for test
-    filename  = "../voxels/star_cube.msh"
+    filename  = "../tests/cells/star_cube.msh"
     E = 200e9 # Young's modulus in Pa
     nu = 0.3  # Poisson's ratio
     homo = CellHomogenization(filename, E, nu)

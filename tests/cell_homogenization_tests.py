@@ -10,7 +10,7 @@ import numpy as np
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-voxel_base_path = pathlib.Path("../voxels")
+voxel_base_path = pathlib.Path("cells")
 voxel_img_path = pathlib.Path("../img")
 all_voxels = [
     "cross_lattice.msh",

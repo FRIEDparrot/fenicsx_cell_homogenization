@@ -64,18 +64,55 @@ Closely related work has done by Dong et al using *voxel-based homogenization*. 
 
 And this repo and found at [https://github.com/GuoyingDong/homogenization](https://github.com/GuoyingDong/homogenization) 
 
-## 3) How to use this program 
+## 3) How to use this program
+### 1. Install Dependencies
+This program runs by [Fenicsx](https://docs.fenicsproject.org/), which can be installed by instructions here, or by following command:
+```shell
+conda create -n fenicsx-env
+conda activate fenicsx-env 
+conda install -n fenicsx-env -c conda-forge libopenblas # this might be necessary  
+ls $CONDA_PREFIX/lib/libopenblas.so*  # validate
+conda install -c conda-forge fenics-dolfinx mpich pyvista  # install main dependencies 
+```=
 
-Run `tests/cell_generation.py` to generate  cell mesh of all cells 
+[Gmsh](https://gmsh.info/) library is also required to generate cell mesh, you can install it by:
+
+```shell
+pip install --upgrade gmsh 
+# pygmsh
+# pip install --upgrade pygmsh  
+pip install meshio
+gmsh # start GUI interface 
+```
+
+### 2. How to Run the script
+I recommend you use pycharm professional to run this project. 
+
+```shell
+git clone https://github.com/FRIEDparrot/fenicsx_cell_homogenization.git
+cd fenicsx_cell_homogenization  # set working directory  
+```
+
+Run `tests/cell_generation.py` to generate cell mesh of all cells in cells directory under the test folder. 
+```shell
+# ADD THE PROJECT PATH TO TEMPORARY PYTHONPATH WHEN RUN
+conda run -n fenicsx-env PYTHONPATH=. python -m tests.cell_generation 
+```
 
 Run `tests/cell_homogenization_tests.py` to compute effective stiffness tensor for all cells and visualize the results. 
+```shell
+# ADD THE PROJECT PATH TO TEMPORARY PYTHONPATH WHEN RUN
+conda run -n fenicsx-env PYTHONPATH=. python -m tests.cell_homogenization_tests 
+```
 
-If you want calculate faster, you can change ` V = functionspace(self.domain, ("CG", 2, (self.dim,))) ` 
-to 1-degree element, which will also cause result to be less accurate.
+this will calculate and show all result pictures (close it to make program run and show next), this is the example picture (first shown) 
+![test_show.png](img/test_show.png)
+
+If you want calculate faster, you can change `V = functionspace(self.domain, ("CG", 2, (self.dim,)))` to 1-degree element, which will also cause result to be less accurate.
 
 You may carefully adjust the mesh size of cells when calculating. 
 
-## 4) Some Examples 
+## 4) Some Examples and Results 
 
 1. Cube cell  
 
