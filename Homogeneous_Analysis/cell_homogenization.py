@@ -32,27 +32,33 @@ class CellHomogenization:
         self.vz = 1.0
         self.vol = self.vx * self.vy * self.vz  # Volume of the domain
 
-    @staticmethod
-    def get_periodic_dofs(V, direction = 0):
+    def get_periodic_dofs(self, V, direction = 0):
         """
         Get the dofs of the periodic boundary conditions
         :param V:
         :param direction:
         :return:
         """
-        dofs_master = locate_dofs_geometrical(V, marker=lambda x: np.isclose(x[direction], 0.0))  # locate master dofs
-        dofs_slave = locate_dofs_geometrical(V, marker=lambda x: np.isclose(x[direction], 1.0))  # locate slave dofs
+        dofs_master = locate_dofs_geometrical(V, marker=lambda x: self.periodic_indicator(x, direction, 0.0))  # locate master dofs
+        dofs_slave = locate_dofs_geometrical(V, marker=lambda x: self.periodic_indicator(x, direction, 1.0))  # locate slave dofs
         return dofs_master, dofs_slave
-
+    
     @staticmethod
-    def periodic_indicator(x, direction=0):
+    def periodic_indicator(x, direction=0, value=1.0):
         """
         :param x:
         :param direction:
         :return:
         """
-        return np.isclose(x[direction], 1.0)
-
+        all_axis = set((0, 1, 2)) 
+        all_axis.remove(direction)
+        ax1, ax2 = tuple(all_axis)
+        # remove other axis  
+        at_ax1_edge = np.logical_or(np.isclose(x[ax1],0.0), np.isclose(x[ax1],1.0))
+        at_ax2_edge = np.logical_or(np.isclose(x[ax2],0.0), np.isclose(x[ax2],1.0))
+        at_edge = np.logical_or(at_ax1_edge, at_ax2_edge)
+        return np.logical_and(np.isclose(x[direction], value), np.logical_not(at_edge))
+        
     @staticmethod
     def periodic_relation(x, direction=0):
         """
@@ -109,7 +115,7 @@ class CellHomogenization:
             a = ufl.inner(sigma_voigt(epsilon_voigt(uh), self.lmbda, self.mu, dim=self.dim), epsilon_voigt(v)) * ufl.dx(self.domain)
             L = ufl.inner(sigma_voigt(eps0, self.lmbda, self.mu, dim=self.dim), epsilon_voigt(v)) * ufl.dx(self.domain)
 
-            # Dirichlet boundary condition
+            # Dirichlet boundary condition at center point
             dofs = dfx.fem.locate_dofs_geometrical(V, marker=self.close_to_center)
             bc = dfx.fem.dirichletbc(value=np.zeros(3), dofs=dofs, V=V)
             bcs = [bc]
@@ -154,9 +160,10 @@ def main():
     E = 200e9 # Young's modulus in Pa
     nu = 0.3  # Poisson's ratio
     homo = CellHomogenization(filename, E, nu)
+    print("begin solving homogenization")
     C_H = homo.solve_homogenization()
     print(C_H)  # Effective stiffness tensor (in GPa)
-
+    
     visualizer = HomogenizationVisualizer(C_H)
     visualizer.plot_directional_young_modulus_3d(resolution=100)
 

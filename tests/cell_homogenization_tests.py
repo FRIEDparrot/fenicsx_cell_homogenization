@@ -45,6 +45,7 @@ def main():
             cell_name = voxel.split(".")[0]  # remove the extension
             full_path = voxel_base_path / voxel
 
+            print("solving cell homogenization :")
             homo = CellHomogenization(full_path, E, nu)
             C_H = homo.solve_homogenization()
             all_C_H[cell_name] = C_H

@@ -140,7 +140,8 @@ cell mesh:
 
 result for directional young modulus: 
 
-<img src="img/face_centered_cubic_directional_young_modulus_3d.png" alt="face_centered_cubic_directional_young_modulus_3d.png" style="zoom:15%;" />
+<img src="img/face_centered_cubic_directional_young_modulus_3d.png" alt="face_centered_cubic_directional_young_modulus_3d.png" style="zoom:10%;" />
+
 
 4. Tesseract cell
 
